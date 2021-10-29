@@ -28,9 +28,10 @@ export class RecipeComponent implements OnInit {
   ngOnInit() {
   }
 
-  bang(food: string) {
+ bang(food: string) {
     if (food.length == 0) return;
-    this.foods.push(food);
+    let list = food.split(/[\s,]+/);
+    this.foods = this.foods.concat(list.filter(x => !this.foods.includes(x)));
     this.in_food = '';
   }
 

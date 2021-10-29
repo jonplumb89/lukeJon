@@ -1,18 +1,24 @@
-    <span class="meow">
-      <div class="recSearch">
-        <h2>enter ingredients:</h2>
-        <input (keyup.enter)="bang(thing.value)" [(ngModel)]="in_food" type="text" #thing />
-        <button (click)="bang(thing.value)">Add</button><br />
-      </div>
-    </span>
+<span class="meow">
+  <div class="recSearch">
+    <h2>Whatcha Got Homie:</h2>
+    <input (keyup.enter)="bang(thing.value)" [(ngModel)]="in_food" type="text" #thing class="myBox" />
+    <button (click)="bang(thing.value)" class="myButt">Add</button><br />
+  </div>
+</span>
 
-<tbody> 
+<tbody>
   <tr *ngFor="let food of foods; let i = index" class="food">
     <td class="food"><button (click)="delete(food)">X</button>{{food}}</td>
   </tr>
-</tbody><br />
+</tbody>
+<br />
 
-<button (click)="submitList()">submit</button><br />
+<div class="sButts">
+  <button (click)="submitList()" class="sButts">submit</button>
+</div>
+<br />
+
+<hr />
 
 <tbody class="recList" *ngIf="recipes">
   <tr><h2><u>Recipie Results: </u></h2></tr>
@@ -26,12 +32,16 @@
 </tbody>
 <hr />
 
+<span *ngIf="recipeInfos">
+  <h2><u>Recipie Result</u></h2>
+</span>
+
 <tbody *ngIf="recipeInfos">
   <tr>
     <td> {{recipeInfos.title}}</td>
   </tr>
   <tr *ngFor="let obj of extendIngreds; let i = index">
-    <td>
+    <td class="ingreds">
       <span *ngIf="obj.aisle == 'Spices and Seasonings'">
         {{obj.name}}
       </span>
