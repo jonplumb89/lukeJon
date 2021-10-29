@@ -30,8 +30,7 @@ export class RecipeComponent implements OnInit {
 
  bang(food: string) {
     if (food.length == 0) return;
-    let list = food.split(/[\s,]+/);
-    this.foods = this.foods.concat(list.filter(x => !this.foods.includes(x)));
+   this.foods = this.foods.concat(food.split(/[\s,]+/).filter(x => !this.foods.includes(x)));
     this.in_food = '';
   }
 
