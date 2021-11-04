@@ -43,6 +43,7 @@ export class AuthorizeService {
   private popUpDisabled = true;
   private userManager: UserManager;
   private userSubject: BehaviorSubject<IUser | null> = new BehaviorSubject(null);
+  public user: IUser;
 
   public isAuthenticated(): Observable<boolean> {
     return this.getUser().pipe(map(u => !!u));

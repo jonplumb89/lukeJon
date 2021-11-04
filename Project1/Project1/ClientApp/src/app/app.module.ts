@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -14,6 +13,13 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipesService } from '../recipes.service';
+import { FavoritesComponent } from './favorites/favorites.component';
+
+import { UserComponent } from './user/user.component';
+
+import { MyrecipesComponent } from './myrecipes/myrecipes.component';
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +28,13 @@ import { RecipesService } from '../recipes.service';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    RecipeComponent
+    RecipeComponent,
+    FavoritesComponent,
+
+    UserComponent,
+
+    MyrecipesComponent
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +45,8 @@ import { RecipesService } from '../recipes.service';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'MyFavoriteRecipes', component: FavoritesComponent, canActivate: [AuthorizeGuard] },
+      { path: 'MyRecipes', component: MyrecipesComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [RecipesService,
